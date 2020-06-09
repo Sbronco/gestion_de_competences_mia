@@ -24,4 +24,5 @@ public interface ExpoLrdRemote {
     public void validerCandidature(long idCandidature, boolean decision, String flag, long idEquipe );
     public void creerFichePoste(long idDemandeCompetence, String descEnt, String descPoste);
     public List<CandidatureExport> listerCandidature();
+    public List<DmdCompExport> listerDmdComp(String status);
 }

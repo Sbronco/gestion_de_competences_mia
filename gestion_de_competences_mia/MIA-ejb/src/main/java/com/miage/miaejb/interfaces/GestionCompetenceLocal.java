@@ -24,4 +24,5 @@ public interface GestionCompetenceLocal {
     public void validerCompetence (long idDmdCmp, String status);
     public int getNbCompetence();
     public int getNbCompetenceSouffrance();
+    public List<DmdComp> listerDmdComp(String status);
 }

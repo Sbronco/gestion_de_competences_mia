@@ -7,20 +7,20 @@ package com.miage.miaweb.ws;
  */
 
 import com.miage.miaejb.entity.Competence;
-import com.miage.miaejb.exposition.ExpoLegLocal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.jws.Oneway;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import com.miage.miaejb.exposition.ExpoLegLocal;
 
 /**
  *
  * @author David BRISSET
  */
-@WebService(serviceName = "WSLeg", targetNamespace = "http://my.org/ns/")
-public class WSLeg {
+@WebService(serviceName = "WSLegManager")
+public class WSLegManager {
 
     @EJB
     private ExpoLegLocal ejbRef;
@@ -28,14 +28,14 @@ public class WSLeg {
      * This is a sample web service operation
      */
     @WebMethod(operationName = "listerCompetences")
-    public List<Competence> listerCompetences(String idEquipe){
+    public List<Competence> listerCompetences(@WebParam(name="idEquipe") String idEquipe){
         Long idE = Long.parseLong(idEquipe);
         return ejbRef.listerCompetences(idE);
     }
 
     @WebMethod(operationName = "demandeCompetence")
     @Oneway
-    public void demandeCompetence(String idEquipe, String idCompetence){
+    public void demandeCompetence(@WebParam(name="idEquipe") String idEquipe,@WebParam(name="idCompetence") String idCompetence){
         Long idE = Long.parseLong(idEquipe);
         Long idC = Long.parseLong(idCompetence);
         ejbRef.demandeCompetence(idE, idC);

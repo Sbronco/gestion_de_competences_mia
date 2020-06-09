@@ -84,4 +84,13 @@ public class ExpoLrd implements ExpoLrdRemote {
         }
         return candidatureExport;
     } 
+
+    @Override
+    public List<DmdCompExport> listerDmdComp(String status) {
+        List<DmdCompExport> listDmdCompExport = new ArrayList<DmdCompExport>();
+        for(DmdComp d : this.gestionCompetence.listerDmdComp(status)){
+            listDmdCompExport.add(new DmdCompExport(d.getId(), d.getStatus()));
+        }
+        return listDmdCompExport;
+    }
 }

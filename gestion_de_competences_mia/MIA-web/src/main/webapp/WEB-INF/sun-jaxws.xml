@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <endpoints version="2.0" xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
-  <endpoint implementation="com.miage.miaweb.ws.WSLeg" name="WSLeg" url-pattern="/WSLeg"/>
+  <endpoint implementation="com.miage.miaweb.ws.WSLegManager" name="WSLeg" url-pattern="/WSLeg"/>
+  <endpoint implementation="com.miage.miaweb.ws.WSLegCodir" name="WSLegCodir" url-pattern="/WSLegCodir"/>
+  <endpoint implementation="com.miage.miaweb.ws.WSLegCandidat" name="WSLegCandidat" url-pattern="/WSLegCandidat"/>
+  <endpoint implementation="com.miage.miaweb.ws.WSLegCEO" name="WSLegCEO" url-pattern="/WSLegCEO"/>
 </endpoints>

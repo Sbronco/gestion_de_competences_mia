@@ -70,7 +70,6 @@ public class GestionCompetence implements GestionCompetenceLocal{
     public void validerCompetence(long idDmdCmp, String status) {
         DmdComp dmdComp = this.dmdCompFacade.find(idDmdCmp);      
         dmdComp.setStatus(status);
-        
         }
 
     @Override
@@ -106,8 +105,22 @@ public class GestionCompetence implements GestionCompetenceLocal{
     @Override
     public List<DmdComp> listerDmdComp(long idEquipe) {
         Equipe equipe = this.equipeFacade.find(idEquipe);
-        List<DmdComp> competences = new ArrayList<DmdComp>(equipe.getDmdComps());
-        return competences;
+        List<DmdComp> dmdCompetences = new ArrayList<DmdComp>(equipe.getDmdComps());
+        return dmdCompetences;
     }
+    
+    @Override
+    public List<DmdComp> listerDmdComp(String status) {
+        List<DmdComp> dmdCompetences = this.dmdCompFacade.findAll();
+        List<DmdComp> dmdCompetencesfinal = new ArrayList<DmdComp>();
+        
+        for(DmdComp d: dmdCompetences){
+            if(d.getStatus() == status){
+                dmdCompetencesfinal.add(d);
+            }
+        }
+        return dmdCompetencesfinal;
+    }
+    
     
 }
