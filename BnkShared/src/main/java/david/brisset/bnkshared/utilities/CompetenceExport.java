@@ -12,9 +12,8 @@ import java.io.Serializable;
  * @author David BRISSET
  */
 public class CompetenceExport implements Serializable{
-   private long id; 
-   
-   private String nom;
+    private long id;
+    private String nom;
 
     public CompetenceExport() {
     }
@@ -39,6 +38,6 @@ public class CompetenceExport implements Serializable{
     public void setNom(String nom) {
         this.nom = nom;
     }
-   
-   
+    
+    
 }

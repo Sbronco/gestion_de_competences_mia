@@ -12,15 +12,15 @@ import java.io.Serializable;
  * @author David BRISSET
  */
 public class DmdCompExport implements Serializable{
-    private long id; 
+    private long id;
     private String status;
-
-    public DmdCompExport() {
-    }
 
     public DmdCompExport(long id, String status) {
         this.id = id;
         this.status = status;
+    }
+
+    public DmdCompExport() {
     }
 
     public long getId() {

@@ -17,13 +17,13 @@ public class CandidatureExport implements Serializable{
     private Date dateCandidature;
     private String status;
 
-    public CandidatureExport() {
-    }
-
     public CandidatureExport(long id, Date dateCandidature, String status) {
         this.id = id;
         this.dateCandidature = dateCandidature;
         this.status = status;
+    }
+
+    public CandidatureExport() {
     }
 
     public long getId() {
@@ -33,22 +33,5 @@ public class CandidatureExport implements Serializable{
     public void setId(long id) {
         this.id = id;
     }
-
-    public Date getDateCandidature() {
-        return dateCandidature;
-    }
-
-    public void setDateCandidature(Date dateCandidature) {
-        this.dateCandidature = dateCandidature;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-    
     
 }

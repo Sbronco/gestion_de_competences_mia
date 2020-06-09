@@ -5,6 +5,7 @@
  */
 package com.miage.miaejb.exposition;
 
+import david.brisset.bnkshared.interfremote.ExpoLrdRemote;
 import com.miage.miaejb.entity.Candidature;
 import com.miage.miaejb.entity.Collaborateur;
 import com.miage.miaejb.entity.Competence;
@@ -13,7 +14,6 @@ import com.miage.miaejb.entity.Equipe;
 import com.miage.miaejb.interfaces.GestionCandidatureLocal;
 import com.miage.miaejb.interfaces.GestionCompetenceLocal;
 import com.miage.miaejb.interfaces.GestionOffreLocal;
-import david.brisset.bnkShared.interfremote.ExpoLrdRemote;
 import david.brisset.bnkshared.utilities.CandidatureExport;
 import david.brisset.bnkshared.utilities.CompetenceExport;
 import david.brisset.bnkshared.utilities.DmdCompExport;
@@ -39,7 +39,6 @@ public class ExpoLrd implements ExpoLrdRemote {
     private GestionOffreLocal gestionOffre;
         
         
-
     @Override
     public List<CompetenceExport> listerCompetencesCollaborateur(long idCollaborateur) {
         List<CompetenceExport> competencesExport = new ArrayList<CompetenceExport>();
@@ -81,9 +80,8 @@ public class ExpoLrd implements ExpoLrdRemote {
     public List<CandidatureExport> listerCandidature() {
         List<CandidatureExport> candidatureExport = new ArrayList<CandidatureExport>();
         for(Candidature c : this.gestionCandidature.listerCandidature()){
-            candidatureExport.add(new CandidatureExport(c.getId(),c.getDateCandidature(),c.getStatus()));
+            candidatureExport.add(new CandidatureExport(c.getId(), c.getDateCandidature(), c.getStatus()));
         }
         return candidatureExport;
-    }
-    
+    } 
 }

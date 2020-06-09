@@ -5,7 +5,8 @@
  */
 package david.brisset.cltlrd;
 
-import david.brisset.bnkShared.interfremote.ExpoLrdRemote;
+
+import david.brisset.bnkshared.interfremote.ExpoLrdRemote;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -17,6 +18,8 @@ import javax.naming.NamingException;
 public class main {
     public static void main(String[] args) throws NamingException{
         Context ctx = new InitialContext();
-        ExpoLrdRemote appli = (ExpoLrdRemote) ctx.lookup("david.brisset.bnkShared.interfremote.ExpoLrdRemote");
+        ExpoLrdRemote appli = (ExpoLrdRemote) ctx.lookup("david.brisset.bnkshared.interfremote.ExpoLrdRemote");
+        System.out.println("Test");
+        System.out.println(appli);
     }
 }

@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package david.brisset.bnkShared.interfremote;
+package david.brisset.bnkshared.interfremote;
+
 
 import david.brisset.bnkshared.utilities.CandidatureExport;
 import david.brisset.bnkshared.utilities.CompetenceExport;
