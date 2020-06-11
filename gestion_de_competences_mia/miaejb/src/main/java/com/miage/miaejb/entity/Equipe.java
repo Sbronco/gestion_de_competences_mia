@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -22,6 +23,7 @@ import javax.persistence.OneToMany;
 public class Equipe implements Serializable {
 
     @OneToMany(mappedBy = "equipe")
+    @XmlTransient
     private List<DmdComp> dmdComps;
 
     private static final long serialVersionUID = 1L;
@@ -32,6 +34,7 @@ public class Equipe implements Serializable {
     private String nomEquipe;
     
     @OneToMany(mappedBy = "equipe")
+    @XmlTransient
     private Collection<Collaborateur> collaborateurs;
     
         
@@ -51,6 +54,7 @@ public class Equipe implements Serializable {
         this.nomEquipe = nomEquipe;
     }
 
+    @XmlTransient
     public List<DmdComp> getDmdComps() {
         return dmdComps;
     }
@@ -59,6 +63,7 @@ public class Equipe implements Serializable {
         this.dmdComps = dmdComps;
     }
 
+    @XmlTransient
     public Collection<Collaborateur> getCollaborateurs() {
         return collaborateurs;
     }
@@ -67,6 +72,7 @@ public class Equipe implements Serializable {
         this.collaborateurs = collaborateurs;
     }
 
+    
     
     
     @Override

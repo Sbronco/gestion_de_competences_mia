@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,6 +37,7 @@ public class DmdComp implements Serializable {
     private String status;
     
     @OneToOne
+    @XmlTransient
     private FichePoste ficheposte;
     
 
@@ -77,6 +79,7 @@ public class DmdComp implements Serializable {
         this.status = status;
     }
 
+    @XmlTransient
     public FichePoste getFicheposte() {
         return ficheposte;
     }

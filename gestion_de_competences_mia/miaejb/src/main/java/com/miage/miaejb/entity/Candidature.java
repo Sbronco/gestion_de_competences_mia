@@ -81,11 +81,15 @@ public class Candidature implements Serializable {
 
     public void setStatus(boolean status) {
         if(status){
-            this.status = "Valide";
+            this.status = "Accepte";
         }
         else{
             this.status = "Refuse";
         }   
+    }
+    
+    public void setStatus(String status) {
+        this.status = status;
     }
     
     

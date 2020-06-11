@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,12 +35,14 @@ public class Candidat implements Serializable {
         private String prenom;
         
     @ManyToMany(mappedBy = "candidats")
+    @XmlTransient
     private Collection<Competence> listCompetences;
     
     @OneToOne(mappedBy = "candidat")
     private Collaborateur collaborateur;
     
     @OneToMany(mappedBy = "candidat")
+    @XmlTransient
     private Collection<Candidature> candidatures;
 
     
@@ -68,6 +71,7 @@ public class Candidat implements Serializable {
         this.prenom = prenom;
     }
 
+    @XmlTransient
     public Collection<Competence> getListCompetences() {
         return listCompetences;
     }
@@ -83,6 +87,23 @@ public class Candidat implements Serializable {
 
     public void removeCompetence (Competence c) {
         this.listCompetences.remove(c);
+    }
+
+    public Collaborateur getCollaborateur() {
+        return collaborateur;
+    }
+
+    public void setCollaborateur(Collaborateur collaborateur) {
+        this.collaborateur = collaborateur;
+    }
+
+    @XmlTransient
+    public Collection<Candidature> getCandidatures() {
+        return candidatures;
+    }
+
+    public void setCandidatures(Collection<Candidature> candidatures) {
+        this.candidatures = candidatures;
     }
     
     

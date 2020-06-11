@@ -47,7 +47,7 @@ public class GestionOffre implements GestionOffreLocal{
         List<FichePoste> lfichepostes = this.fichePosteFacade.findAll();
       
         for(int i = 0; i < lfichepostes.size(); i++){
-            if(lfichepostes.get(i).getStatus() != status){
+            if(!lfichepostes.get(i).getStatus().equals(status)){
                 lfichepostes.remove(i);
                 i--;
             }

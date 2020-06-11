@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -24,6 +25,7 @@ import javax.validation.constraints.NotNull;
 public class Competence implements Serializable {
 
     @OneToMany(mappedBy = "competence")
+    @XmlTransient
     private List<DmdComp> dmdComps;
 
 
@@ -36,6 +38,7 @@ public class Competence implements Serializable {
     private String nom;
     
     @ManyToMany
+    @XmlTransient
     private Collection<Candidat> candidats;
     
     public Long getId() {
@@ -54,6 +57,7 @@ public class Competence implements Serializable {
         this.nom = nom;
     }
 
+    @XmlTransient
     public List<DmdComp> getDmdComps() {
         return dmdComps;
     }
@@ -62,6 +66,7 @@ public class Competence implements Serializable {
         this.dmdComps = dmdComps;
     }
 
+    @XmlTransient
     public Collection<Candidat> getCandidats() {
         return candidats;
     }

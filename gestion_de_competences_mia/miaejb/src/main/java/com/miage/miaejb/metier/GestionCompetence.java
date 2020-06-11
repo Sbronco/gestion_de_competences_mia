@@ -115,7 +115,7 @@ public class GestionCompetence implements GestionCompetenceLocal{
         List<DmdComp> dmdCompetencesfinal = new ArrayList<DmdComp>();
         
         for(DmdComp d: dmdCompetences){
-            if(d.getStatus() == status){
+            if(d.getStatus().equals(status)){
                 dmdCompetencesfinal.add(d);
             }
         }

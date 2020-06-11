@@ -50,6 +50,7 @@ public class GestionCandidature implements GestionCandidatureLocal{
         DmdComp dmdComp = this.dmdCompFacade.find(idDemandeCompetence);
         dmdComp.setStatus("Archivee");
         FichePoste fichePoste = new FichePoste(dmdComp, descEnt, descPoste);
+        dmdComp.setFicheposte(fichePoste);
         this.fichePosteFacade.create(fichePoste);
     }
 
@@ -62,7 +63,7 @@ public class GestionCandidature implements GestionCandidatureLocal{
     public List<Candidature> listerCandidature(String status) {
         List<Candidature> listCandidat = new ArrayList<Candidature>();
         for(Candidature c : this.candidatureFacade.findAll()){
-            if(c.getStatus() == status){
+            if(c.getStatus().equals(status)){
                 listCandidat.add(c);
             }
         }
@@ -74,7 +75,7 @@ public class GestionCandidature implements GestionCandidatureLocal{
         List<Candidature> lcandidatures = this.candidatureFacade.findAll();
       
         for(int i = 0; i < lcandidatures.size(); i++){
-            if(lcandidatures.get(i).getStatus() != status){
+            if(!lcandidatures.get(i).getStatus().equals(status)){
                 lcandidatures.remove(i);
                 i--;
             }
@@ -84,8 +85,10 @@ public class GestionCandidature implements GestionCandidatureLocal{
 
     @Override
     public void validerCandidature(long idCandidature, String flag, long idEquipe) {
-            Candidat candidat = this.candidatureFacade.find(idCandidature).getCandidat();
+            Candidature candidature = this.candidatureFacade.find(idCandidature);
+            Candidat candidat = candidature.getCandidat();
             Equipe equipe = equipeFacade.find(idEquipe);
+            candidature.setStatus("Valide");
             Collaborateur collab = new Collaborateur(candidat, equipe, flag);
             this.collaborateurFacade.create(collab);
     }
@@ -95,7 +98,7 @@ public class GestionCandidature implements GestionCandidatureLocal{
         Candidature candidature = this.candidatureFacade.find(idCandidature);      
         candidature.setStatus(decision);
         if(decision){
-            candidature.getFichePoste().setStatus("Archive");
+            candidature.getFichePoste().setStatus("Archivee");
         }
     }
     

@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -46,7 +47,7 @@ public class FichePoste implements Serializable {
     public FichePoste(DmdComp dmdComp, String descEnt, String descPoste) {
         this.dmdComp = dmdComp;
         this.descEnt = descEnt;
-        this.descPost = descPost;
+        this.descPost = descPoste;
         this.status = "Cree";
     }
     
@@ -63,6 +64,7 @@ public class FichePoste implements Serializable {
         this.dmdComp = dmdComp;
     }
 
+    @XmlTransient
     public Collection<Candidature> getCandidatures() {
         return candidatures;
     }
@@ -71,8 +73,8 @@ public class FichePoste implements Serializable {
         this.candidatures = candidatures;
     }
     
-    @NotNull
     @OneToMany(mappedBy = "fichePoste")
+    @XmlTransient
     private Collection<Candidature> candidatures;
 
     public void setId(Long id) {

@@ -33,7 +33,7 @@ public class JFValiderCandidature extends javax.swing.JFrame {
         ctx = new InitialContext();
         appli = (ExpoLrdRemote) ctx.lookup("david.brisset.bnkshared.interfremote.ExpoLrdRemote");
         
-        listCandidatures = appli.listerCandidature("Accepte");
+        listCandidatures = appli.listerCandidature("Valide");
         
         cb_candidature.removeAllItems();
         
@@ -42,9 +42,9 @@ public class JFValiderCandidature extends javax.swing.JFrame {
         }
         
         cbFlag.removeAllItems();
-        cbFlag.addItem("Codir");
-        cbFlag.addItem("Manager");
-        cbFlag.addItem("Les 2");
+        cbFlag.addItem("CODIR");
+        cbFlag.addItem("MANAGER");
+        cbFlag.addItem("LES2");
         
     }
 
