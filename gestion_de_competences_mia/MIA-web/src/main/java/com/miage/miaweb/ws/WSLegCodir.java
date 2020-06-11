@@ -9,6 +9,7 @@ import com.miage.miaejb.entity.DmdComp;
 import com.miage.miaejb.exposition.ExpoLegLocal;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -18,6 +19,7 @@ import javax.jws.WebParam;
  * @author David BRISSET
  */
 @WebService(serviceName = "WSLegCodir")
+@Stateless()
 public class WSLegCodir {
 
     @EJB
@@ -38,11 +40,10 @@ public class WSLegCodir {
         return this.ejbRef.listerDmdComp(status);
     }
 
-    @WebMethod(operationName = "validerCandidature")
-    public void validerCandidature(@WebParam(name="idCandidature") String idCandidature, @WebParam(name="decision") boolean decision, @WebParam(name="flag") String flag, @WebParam(name="idEquipe") String idEquipe) {
+    @WebMethod(operationName = "prononcerCandidature")
+    public void prononcerCandidature(@WebParam(name="idCandidature") String idCandidature, @WebParam(name="decision") boolean decision) {
         Long idC = Long.parseLong(idCandidature);
-        Long idE = Long.parseLong(idEquipe);
-        this.ejbRef.validerCandidature(idC, decision, flag, idE);
+        this.ejbRef.prononcerCandidature(idC, decision);
     }
 
 }

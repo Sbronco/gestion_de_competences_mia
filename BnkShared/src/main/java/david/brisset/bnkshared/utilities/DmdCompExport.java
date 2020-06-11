@@ -6,6 +6,7 @@
 package david.brisset.bnkshared.utilities;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -14,11 +15,35 @@ import java.io.Serializable;
 public class DmdCompExport implements Serializable{
     private long id;
     private String status;
+    private CompetenceExport competence;
+    private EquipeExport equipe;
 
-    public DmdCompExport(long id, String status) {
+    public DmdCompExport(long id, String status, CompetenceExport competence, EquipeExport equipe) {
         this.id = id;
         this.status = status;
+        this.competence = competence;
+        this.equipe = equipe;
     }
+
+    public EquipeExport getEquipe() {
+        return equipe;
+    }
+
+    public void setEquipe(EquipeExport equipe) {
+        this.equipe = equipe;
+    }
+    
+    
+
+    public CompetenceExport getCompetence() {
+        return competence;
+    }
+
+    public void setCompetence(CompetenceExport competence) {
+        this.competence = competence;
+    }
+    
+
 
     public DmdCompExport() {
     }

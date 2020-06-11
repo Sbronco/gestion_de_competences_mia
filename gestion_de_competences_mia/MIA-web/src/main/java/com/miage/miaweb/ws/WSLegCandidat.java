@@ -9,6 +9,7 @@ import com.miage.miaejb.entity.FichePoste;
 import com.miage.miaejb.exposition.ExpoLegLocal;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.jws.Oneway;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -19,6 +20,7 @@ import javax.jws.WebParam;
  * @author David BRISSET
  */
 @WebService(serviceName = "WSLegCandidat")
+@Stateless()
 public class WSLegCandidat {
 
     @EJB

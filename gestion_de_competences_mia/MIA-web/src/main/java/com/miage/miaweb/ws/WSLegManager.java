@@ -7,19 +7,21 @@ package com.miage.miaweb.ws;
  */
 
 import com.miage.miaejb.entity.Competence;
+import com.miage.miaejb.exposition.ExpoLegLocal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.jws.Oneway;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import com.miage.miaejb.exposition.ExpoLegLocal;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author David BRISSET
  */
 @WebService(serviceName = "WSLegManager")
+@Stateless()
 public class WSLegManager {
 
     @EJB

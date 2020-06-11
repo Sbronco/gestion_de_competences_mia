@@ -2,13 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.miage</groupId>
-  <artifactId>MIA</artifactId>
+  <artifactId>mia</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>MIA</name>
-<modules>  <module>MIA-ear</module>
-    <module>MIA-web</module>
-    <module>MIA-ejb</module>
+  <name>mia</name>
+<modules>  <module>miaear</module>
+    <module>miaweb3</module>
+    <module>miaejb</module>
   </modules>
     <dependencies>
     </dependencies>
