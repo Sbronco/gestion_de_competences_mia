@@ -33,7 +33,7 @@ public class JFValiderCandidature extends javax.swing.JFrame {
         ctx = new InitialContext();
         appli = (ExpoLrdRemote) ctx.lookup("david.brisset.bnkshared.interfremote.ExpoLrdRemote");
         
-        listCandidatures = appli.listerCandidature("Valide");
+        listCandidatures = appli.listerCandidature("Accepte");
         
         cb_candidature.removeAllItems();
         

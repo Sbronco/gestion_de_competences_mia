@@ -119,7 +119,8 @@ public class JFCompDmd extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cb_equipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_equipeActionPerformed
-        if (cb_equipe.getSelectedItem() != null && ((String) cb_equipe.getSelectedItem()) != "") {
+
+        if (cb_equipe.getSelectedItem() != null && ( !((String) cb_equipe.getSelectedItem()).equals(""))) {
             List<DmdCompExport> listCompetence = appli.listerDmdComp(Long.parseLong((String) cb_equipe.getSelectedItem()));
             DefaultListModel listModel = new DefaultListModel();
 
@@ -127,6 +128,17 @@ public class JFCompDmd extends javax.swing.JFrame {
                 listModel.addElement(ce.getCompetence().getNom() + " " + ce.getStatus());
             }
 
+            listDmdComp.setModel(listModel);
+        }
+        else if( cb_equipe.getSelectedItem() != null && ((String) cb_equipe.getSelectedItem()).equals(""))
+        {
+           List<DmdCompExport> listCompetence = appli.listerDmdComp();
+            DefaultListModel listModel = new DefaultListModel();
+
+            for (DmdCompExport ce : listCompetence) {
+                listModel.addElement(ce.getCompetence().getNom() + " " + ce.getStatus());
+            } 
+            
             listDmdComp.setModel(listModel);
         }
     }//GEN-LAST:event_cb_equipeActionPerformed

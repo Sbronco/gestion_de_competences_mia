@@ -82,7 +82,7 @@ public class GestionCompetence implements GestionCompetenceLocal{
         List<Competence> competences = new ArrayList<Competence>();
         
         for(DmdComp dmdComp : this.dmdCompFacade.findAll()){
-            if(!competences.contains(dmdComp.getCompetence())){
+            if(!competences.contains(dmdComp.getCompetence()) && dmdComp.getStatus().equals("Acceptee")){
                 competences.add(dmdComp.getCompetence());
             }
         }
