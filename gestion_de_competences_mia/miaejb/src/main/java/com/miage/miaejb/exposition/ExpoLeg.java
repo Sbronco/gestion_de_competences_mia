@@ -24,13 +24,13 @@ public class ExpoLeg implements ExpoLegLocal {
 
     @EJB
     private GestionCompetenceLocal gestionCompetenceLocal;
-    
+
     @EJB
     private GestionOffreLocal gestionOffreLocal;
-    
+
     @EJB
     private GestionCandidatureLocal gestionCandidatureLocal;
-    
+
     @Override
     public List<Competence> listerCompetences(long idEquipe) {
         return this.gestionCompetenceLocal.listerCompetences(idEquipe);
@@ -63,7 +63,7 @@ public class ExpoLeg implements ExpoLegLocal {
 
     @Override
     public int getNbCompetenceSouffrance() {
-       return this.gestionCompetenceLocal.getNbCompetenceSouffrance();
+        return this.gestionCompetenceLocal.getNbCompetenceSouffrance();
     }
 
     @Override

@@ -35,14 +35,31 @@ public class JFMain extends javax.swing.JFrame {
         btn_offreRed = new javax.swing.JButton();
         btn_lCompCollab = new javax.swing.JButton();
         btn_lCand = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnValiderCandidature = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btn_ldmdComp.setText("Liste des competences demandées");
+        btn_ldmdComp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ldmdCompActionPerformed(evt);
+            }
+        });
 
         btn_offreRed.setText("Offres à rédiger");
+        btn_offreRed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_offreRedActionPerformed(evt);
+            }
+        });
 
         btn_lCompCollab.setText("Liste compétence par collaborateur");
+        btn_lCompCollab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_lCompCollabActionPerformed(evt);
+            }
+        });
 
         btn_lCand.setText("Liste des candidats");
         btn_lCand.addActionListener(new java.awt.event.ActionListener() {
@@ -51,33 +68,52 @@ public class JFMain extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Menu principal");
+
+        btnValiderCandidature.setText("Valider une candidature");
+        btnValiderCandidature.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValiderCandidatureActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(btn_ldmdComp)
-                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_lCand)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_offreRed)
-                        .addGap(44, 44, 44)
-                        .addComponent(btn_lCompCollab)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(365, 365, 365)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_lCand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_ldmdComp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_lCompCollab, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
+                        .addGap(173, 173, 173)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_offreRed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnValiderCandidature, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(146, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_lCand)
+                    .addComponent(btn_offreRed))
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_ldmdComp)
-                    .addComponent(btn_offreRed)
-                    .addComponent(btn_lCompCollab))
-                .addGap(60, 60, 60)
-                .addComponent(btn_lCand)
-                .addGap(36, 36, 36))
+                    .addComponent(btnValiderCandidature))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(btn_lCompCollab)
+                .addGap(51, 51, 51))
         );
 
         pack();
@@ -91,6 +127,42 @@ public class JFMain extends javax.swing.JFrame {
             Logger.getLogger(JFMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_lCandActionPerformed
+
+    private void btn_ldmdCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ldmdCompActionPerformed
+        try {
+            JFCompDmd jFLComp = new JFCompDmd();
+            jFLComp.setVisible(true);
+        } catch (NamingException ex) {
+            Logger.getLogger(JFMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_ldmdCompActionPerformed
+
+    private void btn_lCompCollabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lCompCollabActionPerformed
+        try {
+            JFListCompCollab jFLCompCollab = new JFListCompCollab();
+            jFLCompCollab.setVisible(true);
+        } catch (NamingException ex) {
+            Logger.getLogger(JFMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_lCompCollabActionPerformed
+
+    private void btn_offreRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_offreRedActionPerformed
+        try {
+            JFRedigerOffre jFLRedOffre = new JFRedigerOffre();
+            jFLRedOffre.setVisible(true);
+        } catch (NamingException ex) {
+            Logger.getLogger(JFMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_offreRedActionPerformed
+
+    private void btnValiderCandidatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValiderCandidatureActionPerformed
+        try {
+            JFValiderCandidature jFLValCand = new JFValiderCandidature();
+            jFLValCand.setVisible(true);
+        } catch (NamingException ex) {
+            Logger.getLogger(JFMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnValiderCandidatureActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,9 +200,11 @@ public class JFMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnValiderCandidature;
     private javax.swing.JButton btn_lCand;
     private javax.swing.JButton btn_lCompCollab;
     private javax.swing.JButton btn_ldmdComp;
     private javax.swing.JButton btn_offreRed;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,17 +8,40 @@ package david.brisset.bnkshared.utilities;
 import java.io.Serializable;
 
 /**
+ * Classe représentant un candidat destiné à être exporté pour un client lourd
  *
  * @author David BRISSET
  */
-public class CandidatExport implements Serializable{
+public class CandidatExport implements Serializable {
+
+    /**
+     * Identifiant d'un candidat
+     */
     private long id;
+
+    /**
+     * Nom d'un candidat
+     */
     private String nom;
+
+    /**
+     * Prénom d'un candidat
+     */
     private String prenom;
 
+    /**
+     * Constructeur par défaut
+     */
     public CandidatExport() {
     }
 
+    /**
+     * Constructeur paramétrée
+     *
+     * @param id , identifiant du candidat
+     * @param nom , nom du candidat
+     * @param prenom , prenom du candidat
+     */
     public CandidatExport(long id, String nom, String prenom) {
         this.id = id;
         this.nom = nom;
@@ -48,6 +71,5 @@ public class CandidatExport implements Serializable{
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
-    
-    
+
 }

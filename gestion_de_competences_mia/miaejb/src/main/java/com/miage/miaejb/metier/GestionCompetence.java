@@ -23,36 +23,35 @@ import javax.ejb.Stateless;
  *
  * @author David BRISSET
  */
-
 @Stateless
-public class GestionCompetence implements GestionCompetenceLocal{
+public class GestionCompetence implements GestionCompetenceLocal {
 
     @EJB
     private CompetenceFacadeLocal competenceFacade;
-    
+
     @EJB
     private EquipeFacadeLocal equipeFacade;
-    
+
     @EJB
     private DmdCompFacadeLocal dmdCompFacade;
-    
+
     @EJB
     private CollaborateurFacadeLocal collaborateurFacade;
-    
+
     @Override
     public List<Competence> listerCompetences(long idEquipe) {
         Equipe equipe = this.equipeFacade.find(idEquipe);
         List<Collaborateur> collaborateurs = (List<Collaborateur>) equipe.getCollaborateurs();
         List<Competence> competences = new ArrayList<Competence>();
-        
-        for(Collaborateur c : collaborateurs){
-            for(Competence co : c.getCandidat().getListCompetences()){
-                if(!competences.contains(co)){
+
+        for (Collaborateur c : collaborateurs) {
+            for (Competence co : c.getCandidat().getListCompetences()) {
+                if (!competences.contains(co)) {
                     competences.add(co);
                 }
             }
         }
-        
+
         return competences;
     }
 
@@ -60,17 +59,17 @@ public class GestionCompetence implements GestionCompetenceLocal{
     public void demandeCompetence(long idEquipe, long idCompetence) {
         Equipe equipe = this.equipeFacade.find(idEquipe);
         Competence competence = this.competenceFacade.find(idCompetence);
-        
+
         DmdComp dmdComp = new DmdComp(equipe, competence);
         this.dmdCompFacade.create(dmdComp);
-        
+
     }
 
     @Override
     public void validerCompetence(long idDmdCmp, String status) {
-        DmdComp dmdComp = this.dmdCompFacade.find(idDmdCmp);      
+        DmdComp dmdComp = this.dmdCompFacade.find(idDmdCmp);
         dmdComp.setStatus(status);
-        }
+    }
 
     @Override
     public int getNbCompetence() {
@@ -80,13 +79,13 @@ public class GestionCompetence implements GestionCompetenceLocal{
     @Override
     public int getNbCompetenceSouffrance() {
         List<Competence> competences = new ArrayList<Competence>();
-        
-        for(DmdComp dmdComp : this.dmdCompFacade.findAll()){
-            if(!competences.contains(dmdComp.getCompetence()) && dmdComp.getStatus().equals("Acceptee")){
+
+        for (DmdComp dmdComp : this.dmdCompFacade.findAll()) {
+            if (!competences.contains(dmdComp.getCompetence()) && dmdComp.getStatus().equals("Acceptee")) {
                 competences.add(dmdComp.getCompetence());
             }
         }
-        
+
         return competences.size();
     }
 
@@ -108,19 +107,18 @@ public class GestionCompetence implements GestionCompetenceLocal{
         List<DmdComp> dmdCompetences = new ArrayList<DmdComp>(equipe.getDmdComps());
         return dmdCompetences;
     }
-    
+
     @Override
     public List<DmdComp> listerDmdComp(String status) {
         List<DmdComp> dmdCompetences = this.dmdCompFacade.findAll();
         List<DmdComp> dmdCompetencesfinal = new ArrayList<DmdComp>();
-        
-        for(DmdComp d: dmdCompetences){
-            if(d.getStatus().equals(status)){
+
+        for (DmdComp d : dmdCompetences) {
+            if (d.getStatus().equals(status)) {
                 dmdCompetencesfinal.add(d);
             }
         }
         return dmdCompetencesfinal;
     }
-    
-    
+
 }

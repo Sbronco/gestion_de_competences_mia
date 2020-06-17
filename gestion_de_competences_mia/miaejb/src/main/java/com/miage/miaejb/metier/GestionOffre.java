@@ -20,18 +20,18 @@ import javax.ejb.Stateless;
  *
  * @author David BRISSET
  */
-
 @Stateless
-public class GestionOffre implements GestionOffreLocal{
+public class GestionOffre implements GestionOffreLocal {
 
-        @EJB
+    @EJB
     private FichePosteFacadeLocal fichePosteFacade;
-        
-     @EJB
+
+    @EJB
     private CandidatFacadeLocal candidatFacade;
-        
-         @EJB
-    private CandidatureFacadeLocal candidatureFacade;    
+
+    @EJB
+    private CandidatureFacadeLocal candidatureFacade;
+
     @Override
     public List<FichePoste> consulterOffres() {
         return this.fichePosteFacade.findAll();
@@ -45,24 +45,24 @@ public class GestionOffre implements GestionOffreLocal{
     @Override
     public int getNbFichePoste(String status) {
         List<FichePoste> lfichepostes = this.fichePosteFacade.findAll();
-      
-        for(int i = 0; i < lfichepostes.size(); i++){
-            if(!lfichepostes.get(i).getStatus().equals(status)){
+
+        for (int i = 0; i < lfichepostes.size(); i++) {
+            if (!lfichepostes.get(i).getStatus().equals(status)) {
                 lfichepostes.remove(i);
                 i--;
             }
         }
         return lfichepostes.size();
     }
-    
-        @Override
+
+    @Override
     public void candidater(long idFichePoste, long idCandidat) {
         FichePoste fichePoste = this.fichePosteFacade.find(idFichePoste);
         Candidat candidat = this.candidatFacade.find(idCandidat);
-        
+
         Candidature candidature = new Candidature(fichePoste, candidat);
         this.candidatureFacade.create(candidature);
-        
+
     }
-    
+
 }

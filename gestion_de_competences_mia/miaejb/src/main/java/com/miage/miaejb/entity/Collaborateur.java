@@ -14,28 +14,53 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
+ * Représente un collaborateur de l'entreprise
  *
  * @author David BRISSET
  */
 @Entity
 public class Collaborateur implements Serializable {
 
+    /**
+     * Profil du collaborateur quand il était encore candidat
+     */
     @OneToOne
     private Candidat candidat;
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     * Identifiant d'un collaborateur
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
+    /**
+     * Représente le status du collaborateur (Manager, Codir, ou les 2)
+     */
     private String flag;
+
+    /**
+     * L'équipe où est affecté le collaborateur
+     */
     @ManyToOne
     private Equipe equipe;
 
-    public Collaborateur(){
-        
+    /**
+     * Constructeur par défaut
+     */
+    public Collaborateur() {
+
     }
+
+    /**
+     * Constructeur avec paramètre
+     *
+     * @param candidat , profil du candidat du collaborateur
+     * @param equipe , équipe ou se trouve le collaborateur
+     * @param flag , le status du collaborateur
+     */
     public Collaborateur(Candidat candidat, Equipe equipe, String flag) {
         this.candidat = candidat;
         this.flag = flag;
@@ -65,9 +90,7 @@ public class Collaborateur implements Serializable {
     public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
     }
-    
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -76,8 +99,6 @@ public class Collaborateur implements Serializable {
         this.id = id;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -102,5 +123,5 @@ public class Collaborateur implements Serializable {
     public String toString() {
         return "com.miage.Entity.Collaborateur[ id=" + id + " ]";
     }
-    
+
 }

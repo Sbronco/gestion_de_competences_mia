@@ -9,15 +9,42 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * Classe représentant une demande de compétence destinée à être exportée pour
+ * un client lourd
  *
  * @author David BRISSET
  */
-public class DmdCompExport implements Serializable{
+public class DmdCompExport implements Serializable {
+
+    /**
+     * Identifiant d'une DemandeDeCompetence
+     */
     private long id;
+
+    /**
+     * Status de la demande de compétence
+     */
     private String status;
+
+    /**
+     * CompetenceExport associée à la demande de compétence
+     */
     private CompetenceExport competence;
+
+    /**
+     * EquipeExport associée à la demande de compétence
+     */
     private EquipeExport equipe;
 
+    /**
+     * Constructeur paramétrée
+     *
+     * @param id , identifiant de la demande de compétence
+     * @param status , status de la demande de compétence
+     * @param competence , profil competenceExport associé à la demande de
+     * compétence
+     * @param equipe , profil equipeExport associé à la demande de compétence
+     */
     public DmdCompExport(long id, String status, CompetenceExport competence, EquipeExport equipe) {
         this.id = id;
         this.status = status;
@@ -32,8 +59,6 @@ public class DmdCompExport implements Serializable{
     public void setEquipe(EquipeExport equipe) {
         this.equipe = equipe;
     }
-    
-    
 
     public CompetenceExport getCompetence() {
         return competence;
@@ -42,8 +67,6 @@ public class DmdCompExport implements Serializable{
     public void setCompetence(CompetenceExport competence) {
         this.competence = competence;
     }
-    
-
 
     public DmdCompExport() {
     }
@@ -63,6 +86,5 @@ public class DmdCompExport implements Serializable{
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
+
 }

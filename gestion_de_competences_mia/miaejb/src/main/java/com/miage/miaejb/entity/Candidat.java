@@ -19,6 +19,7 @@ import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Classe représentant un candidat à une fiche de poste
  *
  * @author David BRISSET
  */
@@ -26,35 +27,52 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Candidat implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    /**
+     * N° d'identifiant d'un candidat
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-        private String nom;
-    
-        private String prenom;
-        
+    /**
+     * Nom d'un candidat
+     */
+    private String nom;
+
+    /**
+     * Prenom d'un candidat
+     */
+    private String prenom;
+
+    /**
+     * Liste des compétences que possède un candidat
+     */
     @ManyToMany(mappedBy = "candidats")
     @XmlTransient
     private Collection<Competence> listCompetences;
-    
+
+    /**
+     * Profil du collaborateur associé au profil candidat une fois la
+     * candidature acceptee
+     */
     @OneToOne(mappedBy = "candidat")
     private Collaborateur collaborateur;
-    
+
+    /**
+     * Liste des candidatures que le candidat a fait
+     */
     @OneToMany(mappedBy = "candidat")
     @XmlTransient
     private Collection<Candidature> candidatures;
 
-    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }  
-    
-        
+    }
+
     public String getNom() {
         return nom;
     }
@@ -79,13 +97,12 @@ public class Candidat implements Serializable {
     public void setListCompetences(ArrayList<Competence> listCompetences) {
         this.listCompetences = listCompetences;
     }
-    
-    
-        public void addCompetence(Competence c) {
-            listCompetences.add(c);
+
+    public void addCompetence(Competence c) {
+        listCompetences.add(c);
     }
 
-    public void removeCompetence (Competence c) {
+    public void removeCompetence(Competence c) {
         this.listCompetences.remove(c);
     }
 
@@ -105,9 +122,7 @@ public class Candidat implements Serializable {
     public void setCandidatures(Collection<Candidature> candidatures) {
         this.candidatures = candidatures;
     }
-    
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -132,5 +147,5 @@ public class Candidat implements Serializable {
     public String toString() {
         return "com.miage.Entity.Candidat[ id=" + id + " ]";
     }
-    
+
 }

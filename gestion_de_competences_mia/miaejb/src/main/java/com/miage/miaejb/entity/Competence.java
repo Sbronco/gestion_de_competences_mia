@@ -18,29 +18,42 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Représente une compétence
  *
  * @author David BRISSET
  */
 @Entity
 public class Competence implements Serializable {
 
+    /**
+     * Liste des demande de compétences où on demande cette compétence
+     */
     @OneToMany(mappedBy = "competence")
     @XmlTransient
     private List<DmdComp> dmdComps;
 
-
     private static final long serialVersionUID = 1L;
+
+    /**
+     * Identifiant de la compétence
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    /**
+     * Nom de la compétence
+     */
     @NotNull
     private String nom;
-    
+
+    /**
+     * Liste des candidats qui ont cette compétence
+     */
     @ManyToMany
     @XmlTransient
     private Collection<Candidat> candidats;
-    
+
     public Long getId() {
         return id;
     }
@@ -75,7 +88,6 @@ public class Competence implements Serializable {
         this.candidats = candidats;
     }
 
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -100,5 +112,5 @@ public class Competence implements Serializable {
     public String toString() {
         return "com.miage.Entity.Competence[ id=" + id + " ]";
     }
-    
+
 }

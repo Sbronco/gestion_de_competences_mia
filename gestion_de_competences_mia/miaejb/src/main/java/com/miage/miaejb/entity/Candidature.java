@@ -14,35 +14,64 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 /**
+ * Représente la candidature d'un candidat à une fiche de poste
  *
  * @author David BRISSET
  */
 @Entity
 public class Candidature implements Serializable {
 
+    /**
+     * Candidat qui fait la candidature
+     */
     @ManyToOne
     private Candidat candidat;
 
+    /**
+     * Fiche de poste associée à la candidature
+     */
     @ManyToOne
     private FichePoste fichePoste;
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     * L'identifiant d'une candidature
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-        private Date dateCandidature;
+
+    /**
+     * La date de la candidature
+     */
+    private Date dateCandidature;
+
+    /**
+     * Le status d'une candidature
+     */
     private String status;
 
-    public Candidature(){
-        
+    /**
+     * Constructeur par défaut d'une candidature
+     */
+    public Candidature() {
+
     }
+
+    /**
+     * Constructeur d'une candidature avec parametre
+     *
+     * @param fichePoste , Fiche de poste de la candidature
+     * @param candidat , Candidat de la candidature
+     */
     public Candidature(FichePoste fichePoste, Candidat candidat) {
         this.fichePoste = fichePoste;
         this.candidat = candidat;
         this.dateCandidature = new Date();
         this.status = "Cree";
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -51,13 +80,13 @@ public class Candidature implements Serializable {
         this.id = id;
     }
 
-        public Date getDateCandidature() {
+    public Date getDateCandidature() {
         return dateCandidature;
     }
 
     public void setDateCandidature(Date dateCandidature) {
         this.dateCandidature = dateCandidature;
-    }   
+    }
 
     public Candidat getCandidat() {
         return candidat;
@@ -79,20 +108,25 @@ public class Candidature implements Serializable {
         return status;
     }
 
+    /**
+     * Setter particulier, on passe en paramètre un boolean et suivant sa valeur
+     * on va mettre un status particulier
+     *
+     * @param status , boolean pour dire si la candidature est accepté ou non
+     * par le codir
+     */
     public void setStatus(boolean status) {
-        if(status){
+        if (status) {
             this.status = "Accepte";
-        }
-        else{
+        } else {
             this.status = "Refuse";
-        }   
+        }
     }
-    
+
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -117,5 +151,5 @@ public class Candidature implements Serializable {
     public String toString() {
         return "com.miage.Entity.Candidature[ id=" + id + " ]";
     }
-    
+
 }

@@ -18,6 +18,7 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Représente les demandes de coméptences faites par les maangers
  *
  * @author David BRISSET
  */
@@ -25,36 +26,59 @@ import javax.xml.bind.annotation.XmlTransient;
 public class DmdComp implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     * Identifiant d'une demande de compétence
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    /**
+     * Equipe associée à la demande de compétence
+     */
     @NotNull
     @ManyToOne
     private Equipe equipe;
-    
+
+    /**
+     * Status de la demande de compétence
+     */
     @NotNull
     private String status;
-    
+
+    /**
+     * Fiche de poste associée à la demande de compétence
+     */
     @OneToOne
     @XmlTransient
     private FichePoste ficheposte;
-    
 
+    /**
+     * Compétence demandée
+     */
     @ManyToOne
     private Competence competence;
 
-    
-    public DmdComp(){
-        
+    /**
+     * Constructeur par défaut
+     */
+    public DmdComp() {
+
     }
-    
+
+    /**
+     * Constructeur paramétrée
+     *
+     * @param equipe , équipe qui demande la comépetence
+     * @param competence , compétence demandée
+     */
     public DmdComp(Equipe equipe, Competence competence) {
         this.equipe = equipe;
         this.competence = competence;
         this.status = "Cree";
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -96,8 +120,6 @@ public class DmdComp implements Serializable {
         this.competence = competence;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -122,5 +144,5 @@ public class DmdComp implements Serializable {
     public String toString() {
         return "com.miage.Entity.DmdComp[ id=" + id + " ]";
     }
-    
+
 }

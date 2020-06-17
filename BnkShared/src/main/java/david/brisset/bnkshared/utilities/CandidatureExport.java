@@ -9,16 +9,47 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * Classe représentant une candidature destinée à être exportée pour un client
+ * lourd
  *
  * @author David BRISSET
  */
-public class CandidatureExport implements Serializable{
+public class CandidatureExport implements Serializable {
+
+    /**
+     * Identifiant d'une candidature
+     */
     private long id;
+
+    /**
+     * Date de la candidature
+     */
     private Date dateCandidature;
+
+    /**
+     * Status de la candidature
+     */
     private String status;
+
+    /**
+     * Profil candidatExport de la candidature
+     */
     private CandidatExport candidat;
+
+    /**
+     * FicheDePosteExport associé à la candidature
+     */
     private FichePosteExport ficheposte;
 
+    /**
+     * Constructeure paramétrée
+     *
+     * @param id , identifiant de la candidature
+     * @param dateCandidature , date de la candidature
+     * @param status , status de la candidature
+     * @param candidat , profil candidatExport associé à la candidature
+     * @param ficheposte , profil fichedeposteExport associé à la candidature
+     */
     public CandidatureExport(long id, Date dateCandidature, String status, CandidatExport candidat, FichePosteExport ficheposte) {
         this.id = id;
         this.dateCandidature = dateCandidature;
@@ -34,8 +65,6 @@ public class CandidatureExport implements Serializable{
     public void setFicheposte(FichePosteExport ficheposte) {
         this.ficheposte = ficheposte;
     }
-    
-
 
     public Date getDateCandidature() {
         return dateCandidature;
@@ -61,8 +90,6 @@ public class CandidatureExport implements Serializable{
         this.candidat = candidat;
     }
 
-    
-
     public CandidatureExport() {
     }
 
@@ -73,10 +100,10 @@ public class CandidatureExport implements Serializable{
     public void setId(long id) {
         this.id = id;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return this.dateCandidature + this.status;
     }
-    
+
 }

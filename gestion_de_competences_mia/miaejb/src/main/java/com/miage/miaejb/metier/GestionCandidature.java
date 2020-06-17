@@ -28,7 +28,7 @@ import javax.ejb.Stateless;
  * @author David BRISSET
  */
 @Stateless
-public class GestionCandidature implements GestionCandidatureLocal{
+public class GestionCandidature implements GestionCandidatureLocal {
 
     @EJB
     private CollaborateurFacadeLocal collaborateurFacade;
@@ -38,13 +38,13 @@ public class GestionCandidature implements GestionCandidatureLocal{
 
     @EJB
     private EquipeFacadeLocal equipeFacade;
-    
+
     @EJB
     private DmdCompFacadeLocal dmdCompFacade;
-    
+
     @EJB
     private FichePosteFacadeLocal fichePosteFacade;
-    
+
     @Override
     public void creerFichePoste(long idDemandeCompetence, String descEnt, String descPoste) {
         DmdComp dmdComp = this.dmdCompFacade.find(idDemandeCompetence);
@@ -58,12 +58,12 @@ public class GestionCandidature implements GestionCandidatureLocal{
     public List<Candidature> listerCandidature() {
         return this.candidatureFacade.findAll();
     }
-    
+
     @Override
     public List<Candidature> listerCandidature(String status) {
         List<Candidature> listCandidat = new ArrayList<Candidature>();
-        for(Candidature c : this.candidatureFacade.findAll()){
-            if(c.getStatus().equals(status)){
+        for (Candidature c : this.candidatureFacade.findAll()) {
+            if (c.getStatus().equals(status)) {
                 listCandidat.add(c);
             }
         }
@@ -73,9 +73,9 @@ public class GestionCandidature implements GestionCandidatureLocal{
     @Override
     public int getNbCandidature(String status) {
         List<Candidature> lcandidatures = this.candidatureFacade.findAll();
-      
-        for(int i = 0; i < lcandidatures.size(); i++){
-            if(!lcandidatures.get(i).getStatus().equals(status)){
+
+        for (int i = 0; i < lcandidatures.size(); i++) {
+            if (!lcandidatures.get(i).getStatus().equals(status)) {
                 lcandidatures.remove(i);
                 i--;
             }
@@ -85,21 +85,22 @@ public class GestionCandidature implements GestionCandidatureLocal{
 
     @Override
     public void validerCandidature(long idCandidature, String flag, long idEquipe) {
-            Candidature candidature = this.candidatureFacade.find(idCandidature);
-            Candidat candidat = candidature.getCandidat();
-            Equipe equipe = equipeFacade.find(idEquipe);
-            candidature.setStatus("Valide");
-            Collaborateur collab = new Collaborateur(candidat, equipe, flag);
-            this.collaborateurFacade.create(collab);
+        Candidature candidature = this.candidatureFacade.find(idCandidature);
+        Candidat candidat = candidature.getCandidat();
+        Equipe equipe = equipeFacade.find(idEquipe);
+        candidature.setStatus("Valide");
+        Collaborateur collab = new Collaborateur(candidat, equipe, flag);
+        this.collaborateurFacade.create(collab);
     }
 
     @Override
     public void prononcerCandidature(long idCandidature, boolean decision) {
-        Candidature candidature = this.candidatureFacade.find(idCandidature);      
+        Candidature candidature = this.candidatureFacade.find(idCandidature);
         candidature.setStatus(decision);
-        if(decision){
+        if (decision) {
             candidature.getFichePoste().setStatus("Archivee");
+            this.candidatureFacade.edit(candidature);
         }
     }
-    
+
 }

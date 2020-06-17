@@ -31,8 +31,6 @@ public class GestionCollaborateur implements GestionCollaborateurLocal {
         return this.collaborateurFacade.findAll();
     }
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
     public List<Equipe> toutesLesEquipes() {
         return this.equipeFacade.findAll();
     }

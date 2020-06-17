@@ -23,34 +23,48 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Component id="btn_ldmdComp" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn_lCand" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="btn_offreRed" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                      <Component id="btn_lCompCollab" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="365" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btn_lCand" max="32767" attributes="0"/>
+                          <Component id="btn_ldmdComp" max="32767" attributes="0"/>
+                          <Component id="btn_lCompCollab" pref="283" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btn_offreRed" max="32767" attributes="0"/>
+                          <Component id="btnValiderCandidature" pref="231" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="116" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="146" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btn_lCand" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_offreRed" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btn_ldmdComp" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_offreRed" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_lCompCollab" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnValiderCandidature" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-              <Component id="btn_lCand" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <Component id="btn_lCompCollab" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,16 +74,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Liste des competences demand&#xe9;es"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ldmdCompActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_offreRed">
       <Properties>
         <Property name="text" type="java.lang.String" value="Offres &#xe0; r&#xe9;diger"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_offreRedActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_lCompCollab">
       <Properties>
         <Property name="text" type="java.lang.String" value="Liste comp&#xe9;tence par collaborateur"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_lCompCollabActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_lCand">
       <Properties>
@@ -77,6 +100,19 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_lCandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Menu principal"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnValiderCandidature">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valider une candidature"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnValiderCandidatureActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -16,23 +16,36 @@ import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * Représente une équipe de collaborateur
  * @author David BRISSET
  */
 @Entity
 public class Equipe implements Serializable {
 
+    /**
+     * Liste des demandes de coméptence faites par l'équipe
+     */
     @OneToMany(mappedBy = "equipe")
     @XmlTransient
     private List<DmdComp> dmdComps;
 
     private static final long serialVersionUID = 1L;
+    
+    /**
+     * Identifiant d'une équipe
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    /**
+     * Nom de l'équipe
+     */
     private String nomEquipe;
     
+    /**
+     * Collaborateur travaillant dans l'équipe
+     */
     @OneToMany(mappedBy = "equipe")
     @XmlTransient
     private Collection<Collaborateur> collaborateurs;
